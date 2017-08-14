@@ -3,6 +3,7 @@ package registry
 
 import (
 	"github.com/vulcand/vulcand/plugin"
+	"github.com/vulcand/vulcand/plugin/auth"
 	"github.com/vulcand/vulcand/plugin/cbreaker"
 	"github.com/vulcand/vulcand/plugin/connlimit"
 	"github.com/vulcand/vulcand/plugin/ratelimit"
@@ -14,6 +15,7 @@ func GetRegistry() *plugin.Registry {
 	r := plugin.NewRegistry()
 
 	specs := []*plugin.MiddlewareSpec{
+		auth.GetSpec(),
 		ratelimit.GetSpec(),
 		connlimit.GetSpec(),
 		rewrite.GetSpec(),
